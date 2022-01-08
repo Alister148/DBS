@@ -106,13 +106,14 @@ const schema = [
 
 const buildFiltersArray = () => {
   const filterObject = {
-    Address: { eq: 'Blessington Street'},
-    status: { eq: 'OPEN' },
+    id:{eq:44433567}
   };
   return Object.keys(filterObject).flatMap((fieldName) => {
     return Object.keys(filterObject[fieldName]).map((operator) => {
       // eslint-disable-next-line max-len
-      return (dataObject) => filters[operator](dataObject[fieldName], filterObject[fieldName][operator]);
+      return (dataObject) => {
+        return filters[operator](dataObject[fieldName], filterObject[fieldName][operator])
+      };
     });
   });
 };
@@ -121,7 +122,7 @@ const filtersArray = buildFiltersArray();
 const checkIfDataValid = (operatorArray, bike) => {
   let isDataValid = true;
   operatorArray.forEach((op) => {
-    if (op(bike) && isDataValid) {
+    if (!op(bike)) {
       isDataValid = false;
     }
   });
