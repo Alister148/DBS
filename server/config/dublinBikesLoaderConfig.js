@@ -1,6 +1,6 @@
 module.exports = {
   hostname: 'app-media.noloco.app',
   port: 443,
-  path: '/noloco/dublin-bikes.json',
+  path: '/noloco/dughghgblin-bikes.json',
   method: 'GET',
 };

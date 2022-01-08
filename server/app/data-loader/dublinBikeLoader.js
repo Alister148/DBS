@@ -6,7 +6,7 @@ const dublinBikesLoaderconfig = require('../../config/dublinBikesLoaderConfig');
 
 class DublinBikesLoader {
   bikesData = null;
-  
+
   async loadData() {
     const options = {
       hostname: dublinBikesLoaderconfig.hostname,
@@ -36,8 +36,13 @@ class DublinBikesLoader {
           dataChunk += partialData;
         });
         res.on('end', () => {
-          resolve(JSON.parse(dataChunk));
-          logger.info('Dublin Bikes dataset loaded successfully!');
+          try {
+            resolve(JSON.parse(dataChunk));
+            logger.info('Dublin Bikes dataset loaded successfully!');
+          } catch (e) {
+            reject(new Error('Unable to load the dataset.'));
+            logger.error(e.message);
+          }
         });
       });
 
