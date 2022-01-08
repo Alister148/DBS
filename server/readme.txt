@@ -26,6 +26,7 @@ Implemented a basic-intermediate kind of file structure
 
  I would have done the
             Filter --> validating both the operands for example:if the property that is to filtered is Date then Parsing it and then filtering.    
+            Filter --->case sensitivity of the strings 
             express request-validations.
             unit testing
             and of course the remaing part of the assessment :)
